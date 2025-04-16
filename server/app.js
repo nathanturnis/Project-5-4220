@@ -1,10 +1,34 @@
-const express = require('express')
+console.log('Server starting...');
+require('dotenv').config();
+const express = require('express');
+const multer = require('multer');
+const mysql = require('mysql2');
 const path = require('path');
-const app = express()
-const port = 3000
+const { v4: uuidv4 } = require('uuid');
+const cors = require('cors');
+const forSaleRoutes = require('./for-sale');
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+
+app.use(cors());
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // use after runing npm build to server react app - not needed until deployment
 //app.use(express.static(path.join(__dirname, '../client/dist')));
+
+const db = mysql.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+}).promise();
+
+// FOR SALE
+app.use('/api', forSaleRoutes);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
