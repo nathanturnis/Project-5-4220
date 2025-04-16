@@ -6,14 +6,23 @@ import {
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AppShell, NavLink } from "@mantine/core";
+import { AppShell, Burger, Group, NavLink } from "@mantine/core";
+import { useDisclosure } from "@mantine/hooks";
 import { Link, Outlet, useLocation } from "react-router";
 
 export default function Layout() {
   const location = useLocation();
+  const [opened, { toggle }] = useDisclosure();
 
   return (
-    <AppShell>
+    <AppShell
+      padding="md"
+      navbar={{ width: 250, breakpoint: "sm", collapsed: { mobile: !opened } }}>
+      <AppShell.Header>
+        <Group h="100%" px="md">
+          <Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
+        </Group>
+      </AppShell.Header>
       <AppShell.Navbar p="lg">
         <NavLink
           label="For Sale"
