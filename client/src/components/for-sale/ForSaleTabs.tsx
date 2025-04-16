@@ -4,6 +4,17 @@ import { useState } from "react";
 export default function ForSaleTabs() {
   const [activeTab, setActiveTab] = useState<string | null>("cars");
 
+  // const [boats, setBoats] = useState([]);
+
+  // useEffect(() => {
+  //   fetch("/api/boats")
+  //     .then((res) => {
+  //       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+  //       return res.json();
+  //     })
+  //     .then((data) => setBoats(data));
+  // }, []);
+
   return (
     <Tabs value={activeTab} onChange={setActiveTab}>
       <Tabs.List>
