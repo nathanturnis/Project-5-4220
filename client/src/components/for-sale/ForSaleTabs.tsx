@@ -3,6 +3,9 @@ import { useState } from "react";
 import ItemListing from "./ItemListing";
 import { Boat } from "../../types/boat";
 import { Car } from "../../types/car";
+import { Motorcycle } from "../../types/motorcycle";
+import { Book } from "../../types/book";
+import { Furniture } from "../../types/furniture";
 
 export default function ForSaleTabs() {
   const [activeTab, setActiveTab] = useState<string | null>("cars");
@@ -20,12 +23,18 @@ export default function ForSaleTabs() {
       <Tabs.Panel value="cars">
         <ItemListing<Car> endpoint="/api/cars" />
       </Tabs.Panel>
-      <Tabs.Panel value="motorcycles">Motorcycles</Tabs.Panel>
+      <Tabs.Panel value="motorcycles">
+        <ItemListing<Motorcycle> endpoint="/api/motorcycles" />
+      </Tabs.Panel>
       <Tabs.Panel value="boats">
         <ItemListing<Boat> endpoint="/api/boats" />
       </Tabs.Panel>
-      <Tabs.Panel value="books">Books</Tabs.Panel>
-      <Tabs.Panel value="furniture">Furniture</Tabs.Panel>
+      <Tabs.Panel value="books">
+        <ItemListing<Book> endpoint="/api/books" />
+      </Tabs.Panel>
+      <Tabs.Panel value="furniture">
+        <ItemListing<Furniture> endpoint="/api/furniture" />
+      </Tabs.Panel>
     </Tabs>
   );
 }
