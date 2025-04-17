@@ -9,6 +9,7 @@ import HousingTabs from "./components/housing/HousingTabs.tsx";
 import ServicesTabs from "./components/services/ServicesTabs.tsx";
 import JobsTabs from "./components/jobs/JobsTabs.tsx";
 import CommunityTabs from "./components/community/CommunityTabs.tsx";
+import NewListing from "./components/NewListing.tsx";
 
 const theme = createTheme({
   defaultRadius: "md",
@@ -25,6 +26,7 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/services" element={<ServicesTabs />} />
             <Route path="/jobs" element={<JobsTabs />} />
             <Route path="/community" element={<CommunityTabs />} />
+            <Route path="/new-listing" element={<NewListing />} />
           </Route>
         </Routes>
       </BrowserRouter>

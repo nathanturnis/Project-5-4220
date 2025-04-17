@@ -24,7 +24,9 @@ export default function Layout() {
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="lg">
-        <Button mb="lg">New Listing</Button>
+        <Button mb="lg" component={Link} to="/new-listing">
+          New Listing
+        </Button>
         <NavLink
           label="For Sale"
           component={Link}
