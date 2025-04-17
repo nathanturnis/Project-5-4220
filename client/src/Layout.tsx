@@ -6,7 +6,7 @@ import {
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AppShell, Burger, Group, NavLink } from "@mantine/core";
+import { AppShell, Burger, Button, Group, NavLink } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { Link, Outlet, useLocation } from "react-router";
 
@@ -24,6 +24,7 @@ export default function Layout() {
         </Group>
       </AppShell.Header>
       <AppShell.Navbar p="lg">
+        <Button mb="lg">New Listing</Button>
         <NavLink
           label="For Sale"
           component={Link}
