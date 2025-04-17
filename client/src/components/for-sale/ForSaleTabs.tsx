@@ -1,6 +1,8 @@
 import { Tabs } from "@mantine/core";
 import { useState } from "react";
-import BoatListings from "./BoatListings";
+import ItemListing from "./ItemListing";
+import { Boat } from "../../types/boat";
+import { Car } from "../../types/car";
 
 export default function ForSaleTabs() {
   const [activeTab, setActiveTab] = useState<string | null>("cars");
@@ -15,10 +17,12 @@ export default function ForSaleTabs() {
         <Tabs.Tab value="furniture">Furniture</Tabs.Tab>
       </Tabs.List>
 
-      <Tabs.Panel value="cars">Cars</Tabs.Panel>
+      <Tabs.Panel value="cars">
+        <ItemListing<Car> endpoint="/api/cars" />
+      </Tabs.Panel>
       <Tabs.Panel value="motorcycles">Motorcycles</Tabs.Panel>
       <Tabs.Panel value="boats">
-        <BoatListings />
+        <ItemListing<Boat> endpoint="/api/boats" />
       </Tabs.Panel>
       <Tabs.Panel value="books">Books</Tabs.Panel>
       <Tabs.Panel value="furniture">Furniture</Tabs.Panel>

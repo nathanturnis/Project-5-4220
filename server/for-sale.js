@@ -21,4 +21,15 @@ router.get('/boats', async (req, res) => {
     }
 });
 
+// GET all cars
+router.get('/cars', async (req, res) => {
+    try {
+        const [rows] = await db.query('SELECT * FROM for_sale.car');
+        res.json(rows);
+    } catch (err) {
+        console.error('Error fetching cars:', err);
+        res.status(500).json({ error: 'Failed to fetch cars' });
+    }
+});
+
 module.exports = router;
