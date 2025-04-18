@@ -1,5 +1,8 @@
-import { Tabs } from "@mantine/core";
+import { Button, Tabs } from "@mantine/core";
 import { useState } from "react";
+import ItemListing from "../ItemListing";
+import { ApartmentHouse } from "../../types/apartment_house";
+import { Link } from "react-router";
 
 export default function HousingTabs() {
   const [activeTab, setActiveTab] = useState<string | null>("apts");
@@ -14,8 +17,18 @@ export default function HousingTabs() {
         <Tabs.Tab value="vacation">Vacation Rentals</Tabs.Tab>
       </Tabs.List>
 
-      <Tabs.Panel value="apts">Apartments</Tabs.Panel>
-      <Tabs.Panel value="houses">Houses</Tabs.Panel>
+      <Tabs.Panel value="apts">
+        <Button mt="md" component={Link} to="/housing/new-apt-house">
+          New Listing
+        </Button>
+        <ItemListing<ApartmentHouse> endpoint="/api/apartments" />
+      </Tabs.Panel>
+      <Tabs.Panel value="houses">
+        <Button mt="md" component={Link} to="/housing/new-apt-house">
+          New Listing
+        </Button>
+        <ItemListing<ApartmentHouse> endpoint="/api/houses" />
+      </Tabs.Panel>
       <Tabs.Panel value="commercial">Commercial</Tabs.Panel>
       <Tabs.Panel value="parking">Parking</Tabs.Panel>
       <Tabs.Panel value="vacation">Vacation</Tabs.Panel>

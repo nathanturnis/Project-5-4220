@@ -8,6 +8,7 @@ const { v4: uuidv4 } = require('uuid');
 const cors = require('cors');
 const forSaleRoutes = require('./for-sale');
 const jobsRoutes = require("./job");
+const housingRoutes = require("./housing");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -31,6 +32,7 @@ const db = mysql.createPool({
 // FOR SALE
 app.use('/api', forSaleRoutes);
 app.use('/api', jobsRoutes);
+app.use('/api', housingRoutes);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

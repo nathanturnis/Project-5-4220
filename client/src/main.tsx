@@ -15,6 +15,7 @@ import MotorcyclesForm from "./components/for-sale/MotorcyclesForm.tsx";
 import BoatsForm from "./components/for-sale/BoatsForm.tsx";
 import BooksForm from "./components/for-sale/BooksForm.tsx";
 import FurnitureForm from "./components/for-sale/FurnitureForm.tsx";
+import ApartmentHouseForm from "./components/housing/ApartmentHouseForm.tsx";
 
 const theme = createTheme({
   defaultRadius: "md",
@@ -34,6 +35,11 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/new-furniture" element={<FurnitureForm />} />
 
             <Route path="/housing" element={<HousingTabs />} />
+            <Route
+              path="/housing/new-apt-house"
+              element={<ApartmentHouseForm />}
+            />
+
             <Route path="/services" element={<ServicesTabs />} />
             <Route path="/jobs" element={<JobsTabs />} />
             <Route path="/community" element={<CommunityTabs />} />
