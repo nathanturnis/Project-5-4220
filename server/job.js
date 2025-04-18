@@ -60,4 +60,41 @@ router.get('/jobs/legal', async (req, res) => {
     }
 });
 
+router.post("/jobs", async (req, res) => {
+    const {
+        title,
+        company,
+        location,
+        employment_type,
+        salary,
+        description,
+        level,
+        job_type,
+    } = req.body;
+
+    try {
+        const sql = `
+      INSERT INTO jobs.job_listing
+      (title, company, location, employment_type, salary, description, level, job_type)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+
+        const [result] = await db.execute(sql, [
+            title,
+            company,
+            location,
+            employment_type,
+            salary,
+            description,
+            level,
+            job_type,
+        ]);
+
+        res.status(201).json({ message: "Job created", jobId: result.insertId });
+    } catch (err) {
+        console.error("Error inserting job:", err);
+        res.status(500).json({ error: "Failed to create job" });
+    }
+});
+
 module.exports = router;
