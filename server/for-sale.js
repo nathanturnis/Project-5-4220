@@ -247,7 +247,7 @@ router.post("/furniture", async (req, res) => {
             condition,
         ]);
 
-        res.status(201).json({ message: "Furniture item created", id: result.insertId });
+        res.status(201).json({ message: "Furniture item created", furnitureId: result.insertId });
     } catch (err) {
         console.error("Error inserting furniture:", err);
         res.status(500).json({ error: "Failed to create furniture item" });

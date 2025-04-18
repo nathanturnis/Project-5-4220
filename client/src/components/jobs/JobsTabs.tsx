@@ -1,7 +1,7 @@
 import { Button, Tabs } from "@mantine/core";
 import { useState } from "react";
 import { Job } from "../../types/job";
-import ItemListing from "../for-sale/ItemListing";
+import ItemListing from "../ItemListing";
 import { Link } from "react-router";
 
 export default function JobsTabs() {
