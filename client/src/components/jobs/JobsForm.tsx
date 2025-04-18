@@ -10,6 +10,7 @@ import {
   Title,
 } from "@mantine/core";
 import { Job } from "./../../types/job";
+import { Link } from "react-router";
 
 export default function JobsForm() {
   const [job, setJob] = useState<Job>({
@@ -47,8 +48,11 @@ export default function JobsForm() {
   };
 
   return (
-    <Box maw={600} mt="xl">
-      <Title order={2} mb="md">
+    <Box maw={600}>
+      <Button mt="md" component={Link} to="/jobs">
+        Jobs Listings
+      </Button>
+      <Title order={2} mb="md" mt="md">
         Create Job Listing
       </Title>
       <Stack>
