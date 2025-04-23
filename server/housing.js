@@ -30,6 +30,26 @@ router.get('/houses', async (req, res) => {
     }
 });
 
+router.get('/vacation', async (req, res) => {
+    try {
+        const [rows] = await db.query("SELECT * FROM housing.apartment_house where property_type = 'VAC'");
+        res.json(rows);
+    } catch (err) {
+        console.error('Error fetching houses:', err);
+        res.status(500).json({ error: 'Failed to fetch houses' });
+    }
+});
+
+router.get('/townhomes', async (req, res) => {
+    try {
+        const [rows] = await db.query("SELECT * FROM housing.apartment_house where property_type = 'TOW'");
+        res.json(rows);
+    } catch (err) {
+        console.error('Error fetching houses:', err);
+        res.status(500).json({ error: 'Failed to fetch houses' });
+    }
+});
+
 // POST endpoint to create a new apartment/house listing
 router.post('/apartments', async (req, res) => {
     const {

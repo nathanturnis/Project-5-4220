@@ -61,6 +61,8 @@ export default function ApartmentHouseForm() {
           data={[
             { label: "Apartment", value: "APT" },
             { label: "House", value: "HOUSE" },
+            { label: "Vacation Rental", value: "VAC" },
+            { label: "Townhomes", value: "TOW" },
           ]}
           value={listing.property_type}
           onChange={(val) => handleChange("property_type", val ?? "")}
