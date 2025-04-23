@@ -17,6 +17,7 @@ import BooksForm from "./components/for-sale/BooksForm.tsx";
 import FurnitureForm from "./components/for-sale/FurnitureForm.tsx";
 import ApartmentHouseForm from "./components/housing/ApartmentHouseForm.tsx";
 import CommercialPropertyForm from "./components/housing/CommercialPropertyForm.tsx";
+import ServiceForm from "./components/services/ServicesForm.tsx";
 
 const theme = createTheme({
   defaultRadius: "md",
@@ -46,6 +47,8 @@ createRoot(document.getElementById("root")!).render(
             />
 
             <Route path="/services" element={<ServicesTabs />} />
+            <Route path="/services/new" element={<ServiceForm />} />
+
             <Route path="/jobs" element={<JobsTabs />} />
             <Route path="/community" element={<CommunityTabs />} />
 

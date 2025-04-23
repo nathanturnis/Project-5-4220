@@ -9,6 +9,7 @@ const cors = require('cors');
 const forSaleRoutes = require('./for-sale');
 const jobsRoutes = require("./job");
 const housingRoutes = require("./housing");
+const servicesRoutes = require("./services");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -33,6 +34,7 @@ const db = mysql.createPool({
 app.use('/api', forSaleRoutes);
 app.use('/api', jobsRoutes);
 app.use('/api', housingRoutes);
+app.use('/api', servicesRoutes);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

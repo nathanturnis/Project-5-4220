@@ -1,5 +1,8 @@
-import { Tabs } from "@mantine/core";
+import { Button, Tabs } from "@mantine/core";
 import { useState } from "react";
+import ItemListing from "../ItemListing";
+import { ServiceListing } from "../../types/service";
+import { Link } from "react-router";
 
 export default function ServicesTabs() {
   const [activeTab, setActiveTab] = useState<string | null>("pet");
@@ -14,11 +17,36 @@ export default function ServicesTabs() {
         <Tabs.Tab value="automotive">Automotive</Tabs.Tab>
       </Tabs.List>
 
-      <Tabs.Panel value="pet">Pet</Tabs.Panel>
-      <Tabs.Panel value="cleaning">Cleaning</Tabs.Panel>
-      <Tabs.Panel value="financial">Financial</Tabs.Panel>
-      <Tabs.Panel value="computer">Computer</Tabs.Panel>
-      <Tabs.Panel value="automotive">Automotive</Tabs.Panel>
+      <Tabs.Panel value="pet">
+        <Button mt="md" component={Link} to="/services/new">
+          New Listing
+        </Button>
+        <ItemListing<ServiceListing> endpoint="/api/services?category=PET" />
+      </Tabs.Panel>
+      <Tabs.Panel value="cleaning">
+        <Button mt="md" component={Link} to="/services/new">
+          New Listing
+        </Button>
+        <ItemListing<ServiceListing> endpoint="/api/services?category=CLEAN" />
+      </Tabs.Panel>
+      <Tabs.Panel value="financial">
+        <Button mt="md" component={Link} to="/services/new">
+          New Listing
+        </Button>
+        <ItemListing<ServiceListing> endpoint="/api/services?category=FIN" />
+      </Tabs.Panel>
+      <Tabs.Panel value="computer">
+        <Button mt="md" component={Link} to="/services/new">
+          New Listing
+        </Button>
+        <ItemListing<ServiceListing> endpoint="/api/services?category=COMP" />
+      </Tabs.Panel>
+      <Tabs.Panel value="automotive">
+        <Button mt="md" component={Link} to="/services/new">
+          New Listing
+        </Button>
+        <ItemListing<ServiceListing> endpoint="/api/services?category=AUTO" />
+      </Tabs.Panel>
     </Tabs>
   );
 }
