@@ -3,6 +3,7 @@ import { useState } from "react";
 import ItemListing from "../ItemListing";
 import { ApartmentHouse } from "../../types/apartment_house";
 import { Link } from "react-router";
+import { CommercialProperty } from "../../types/commerical_property";
 
 export default function HousingTabs() {
   const [activeTab, setActiveTab] = useState<string | null>("apts");
@@ -29,7 +30,12 @@ export default function HousingTabs() {
         </Button>
         <ItemListing<ApartmentHouse> endpoint="/api/houses" />
       </Tabs.Panel>
-      <Tabs.Panel value="commercial">Commercial</Tabs.Panel>
+      <Tabs.Panel value="commercial">
+        <Button mt="md" component={Link} to="/housing/new-commercial">
+          New Commerical Property
+        </Button>
+        <ItemListing<CommercialProperty> endpoint="/api/commercial-properties" />
+      </Tabs.Panel>
       <Tabs.Panel value="townhomes">
         <Button mt="md" component={Link} to="/housing/new-apt-house">
           New Listing

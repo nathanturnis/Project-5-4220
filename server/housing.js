@@ -91,5 +91,44 @@ router.post('/apartments', async (req, res) => {
     }
 });
 
+router.get('/commercial-properties', async (req, res) => {
+    try {
+        const [rows] = await db.query('SELECT * FROM housing.commercial_property');
+        res.json(rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Failed to fetch commercial properties' });
+    }
+});
+
+router.post('/commercial-properties', async (req, res) => {
+    const {
+        title,
+        address,
+        country,
+        lot_size,
+        year_built,
+        zoning_type,
+        parking_spaces,
+        price,
+        description,
+    } = req.body;
+
+    try {
+        const [result] = await db.query(
+            `INSERT INTO housing.commercial_property 
+        (title, address, country, lot_size, year_built, zoning_type, parking_spaces, price, description)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+            [title, address, country, lot_size, year_built, zoning_type, parking_spaces, price, description]
+        );
+
+        res.status(201).json({ message: 'Commercial property created', id: result.insertId });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Failed to create commercial property' });
+    }
+});
+
+
 
 module.exports = router;
