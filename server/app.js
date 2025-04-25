@@ -10,6 +10,7 @@ const forSaleRoutes = require('./for-sale');
 const jobsRoutes = require("./job");
 const housingRoutes = require("./housing");
 const servicesRoutes = require("./services");
+const communityRoutes = require("./community");
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -35,6 +36,7 @@ app.use('/api', forSaleRoutes);
 app.use('/api', jobsRoutes);
 app.use('/api', housingRoutes);
 app.use('/api', servicesRoutes);
+app.use('/api', communityRoutes);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
