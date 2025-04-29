@@ -38,6 +38,57 @@ app.use('/api', housingRoutes);
 app.use('/api', servicesRoutes);
 app.use('/api', communityRoutes);
 
+// Login User
+app.post('/api/login', async (req, res) => {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+        return res.status(400).json({ error: 'Username and password are required' });
+    }
+
+    try {
+        const [rows] = await db.query('SELECT * FROM photo_gallery.user WHERE username = ?', [username]);
+        if (rows.length === 0 || rows[0].password !== password) {
+            return res.status(400).json({ error: 'Invalid username or password' });
+        }
+
+        res.json({ message: 'Login successful', user_id: rows[0].id });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.post('/api/register', async (req, res) => {
+    const { username, password } = req.body;
+
+    // Simple validation
+    if (!username || !password) {
+        return res.status(400).json({ error: 'Username and password are required' });
+    }
+
+    try {
+        // Check if the username already exists
+        const [rows] = await db.query('SELECT * FROM photo_gallery.user WHERE username = ?', [username]);
+        if (rows.length > 0) {
+            return res.status(400).json({ error: 'Username already exists' });
+        }
+
+        // Insert user into the database with the plain password
+        const userId = uuidv4();
+        const createdDt = new Date();
+        const modifiedDt = createdDt;
+
+        const sql = `
+            INSERT INTO photo_gallery.user (id, username, password, created_dt, modified_dt)
+            VALUES (?, ?, ?, ?, ?)`;
+        await db.query(sql, [userId, username, password, createdDt, modifiedDt]);
+
+        res.json({ message: 'User registered successfully' });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })

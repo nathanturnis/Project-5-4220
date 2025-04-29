@@ -19,6 +19,8 @@ import ApartmentHouseForm from "./components/housing/ApartmentHouseForm.tsx";
 import CommercialPropertyForm from "./components/housing/CommercialPropertyForm.tsx";
 import ServiceForm from "./components/services/ServicesForm.tsx";
 import CommunityForm from "./components/community/CommunityForm.tsx";
+import LoginForm from "./components/Login.tsx";
+import RegisterForm from "./components/Register.tsx";
 
 const theme = createTheme({
   defaultRadius: "md",
@@ -56,6 +58,8 @@ createRoot(document.getElementById("root")!).render(
 
             <Route path="/jobs/new-job" element={<JobsForm />} />
           </Route>
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<RegisterForm />} />
         </Routes>
       </BrowserRouter>
     </MantineProvider>
