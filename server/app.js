@@ -21,8 +21,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// use after runing npm build to server react app - not needed until deployment
-//app.use(express.static(path.join(__dirname, '../client/dist')));
+// use after runing npm run build to serve react app - not needed until deployment
+app.use(express.static(path.join(__dirname, 'dist')));
 
 const db = mysql.createPool({
     host: process.env.DB_HOST,
