@@ -24,34 +24,51 @@ export default function ForSaleTabs() {
       </Tabs.List>
 
       <Tabs.Panel value="cars">
-        {isLoggedIn ? (
-          <Button mt="md" component={Link} to="/new-car">
-            New Car Listing
-          </Button>
-        ) : null}
-
+        <Button
+          mt="md"
+          component={Link}
+          to="/new-car"
+          display={!isLoggedIn ? "none" : ""}>
+          New Car Listing
+        </Button>
         <ItemListing<Car> endpoint="/api/cars" />
       </Tabs.Panel>
       <Tabs.Panel value="motorcycles">
-        <Button mt="md" component={Link} to="/new-motorcycle">
+        <Button
+          mt="md"
+          component={Link}
+          to="/new-motorcycle"
+          display={!isLoggedIn ? "none" : ""}>
           New Motorcycle Listing
         </Button>
         <ItemListing<Motorcycle> endpoint="/api/motorcycles" />
       </Tabs.Panel>
       <Tabs.Panel value="boats">
-        <Button mt="md" component={Link} to="/new-boat">
+        <Button
+          mt="md"
+          component={Link}
+          to="/new-boat"
+          display={!isLoggedIn ? "none" : ""}>
           New Boat Listing
         </Button>
         <ItemListing<Boat> endpoint="/api/boats" />
       </Tabs.Panel>
       <Tabs.Panel value="books">
-        <Button mt="md" component={Link} to="/new-book">
+        <Button
+          mt="md"
+          component={Link}
+          to="/new-book"
+          display={!isLoggedIn ? "none" : ""}>
           New Book Listing
         </Button>
         <ItemListing<Book> endpoint="/api/books" />
       </Tabs.Panel>
       <Tabs.Panel value="furniture">
-        <Button mt="md" component={Link} to="/new-furniture">
+        <Button
+          mt="md"
+          component={Link}
+          to="/new-furniture"
+          display={!isLoggedIn ? "none" : ""}>
           New Furniture Listing
         </Button>
         <ItemListing<Furniture> endpoint="/api/furniture" />

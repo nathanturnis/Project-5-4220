@@ -3,9 +3,11 @@ import { useState } from "react";
 import { CommunityListing } from "../../types/community";
 import ItemListing from "../ItemListing";
 import { Link } from "react-router";
+import { useAuth } from "../AuthContext";
 
 export default function CommunityTabs() {
   const [activeTab, setActiveTab] = useState<string | null>("activites");
+  const { isLoggedIn } = useAuth();
 
   return (
     <Tabs value={activeTab} onChange={setActiveTab}>
@@ -18,31 +20,51 @@ export default function CommunityTabs() {
       </Tabs.List>
 
       <Tabs.Panel value="activites">
-        <Button mt="md" component={Link} to="/community/new">
+        <Button
+          mt="md"
+          component={Link}
+          to="/community/new"
+          display={!isLoggedIn ? "none" : ""}>
           New Listing
         </Button>
         <ItemListing<CommunityListing> endpoint="/api/community?category=activities" />
       </Tabs.Panel>
       <Tabs.Panel value="events">
-        <Button mt="md" component={Link} to="/community/new">
+        <Button
+          mt="md"
+          component={Link}
+          to="/community/new"
+          display={!isLoggedIn ? "none" : ""}>
           New Listing
         </Button>
         <ItemListing<CommunityListing> endpoint="/api/community?category=events" />
       </Tabs.Panel>
       <Tabs.Panel value="groups">
-        <Button mt="md" component={Link} to="/community/new">
+        <Button
+          mt="md"
+          component={Link}
+          to="/community/new"
+          display={!isLoggedIn ? "none" : ""}>
           New Listing
         </Button>
         <ItemListing<CommunityListing> endpoint="/api/community?category=groups" />
       </Tabs.Panel>
       <Tabs.Panel value="rideshare">
-        <Button mt="md" component={Link} to="/community/new">
+        <Button
+          mt="md"
+          component={Link}
+          to="/community/new"
+          display={!isLoggedIn ? "none" : ""}>
           New Listing
         </Button>
         <ItemListing<CommunityListing> endpoint="/api/community?category=rideshare" />
       </Tabs.Panel>
       <Tabs.Panel value="volunteers">
-        <Button mt="md" component={Link} to="/community/new">
+        <Button
+          mt="md"
+          component={Link}
+          to="/community/new"
+          display={!isLoggedIn ? "none" : ""}>
           New Listing
         </Button>
         <ItemListing<CommunityListing> endpoint="/api/community?category=volunteers" />

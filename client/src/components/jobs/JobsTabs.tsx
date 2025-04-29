@@ -3,9 +3,11 @@ import { useState } from "react";
 import { Job } from "../../types/job";
 import ItemListing from "../ItemListing";
 import { Link } from "react-router";
+import { useAuth } from "../AuthContext";
 
 export default function JobsTabs() {
   const [activeTab, setActiveTab] = useState<string | null>("web");
+  const { isLoggedIn } = useAuth();
 
   return (
     <Tabs value={activeTab} onChange={setActiveTab}>
@@ -18,31 +20,51 @@ export default function JobsTabs() {
       </Tabs.List>
 
       <Tabs.Panel value="web">
-        <Button mt="md" component={Link} to="/jobs/new-job">
+        <Button
+          mt="md"
+          component={Link}
+          to="/jobs/new-job"
+          display={!isLoggedIn ? "none" : ""}>
           New Listing
         </Button>
         <ItemListing<Job> endpoint="/api/jobs/web" />
       </Tabs.Panel>
       <Tabs.Panel value="education">
-        <Button mt="md" component={Link} to="/jobs/new-job">
+        <Button
+          mt="md"
+          component={Link}
+          to="/jobs/new-job"
+          display={!isLoggedIn ? "none" : ""}>
           New Listing
         </Button>
         <ItemListing<Job> endpoint="/api/jobs/education" />
       </Tabs.Panel>
       <Tabs.Panel value="custservice">
-        <Button mt="md" component={Link} to="/jobs/new-job">
+        <Button
+          mt="md"
+          component={Link}
+          to="/jobs/new-job"
+          display={!isLoggedIn ? "none" : ""}>
           New Listing
         </Button>
         <ItemListing<Job> endpoint="/api/jobs/customer-service" />
       </Tabs.Panel>
       <Tabs.Panel value="retail">
-        <Button mt="md" component={Link} to="/jobs/new-job">
+        <Button
+          mt="md"
+          component={Link}
+          to="/jobs/new-job"
+          display={!isLoggedIn ? "none" : ""}>
           New Listing
         </Button>
         <ItemListing<Job> endpoint="/api/jobs/retail" />
       </Tabs.Panel>
       <Tabs.Panel value="legal">
-        <Button mt="md" component={Link} to="/jobs/new-job">
+        <Button
+          mt="md"
+          component={Link}
+          to="/jobs/new-job"
+          display={!isLoggedIn ? "none" : ""}>
           New Listing
         </Button>
         <ItemListing<Job> endpoint="/api/jobs/legal" />
