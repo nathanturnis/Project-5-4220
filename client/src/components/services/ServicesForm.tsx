@@ -84,18 +84,21 @@ export default function ServiceForm() {
           label="Provider Name"
           value={form.provider_name}
           onChange={(e) => handleChange("provider_name", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Location"
           value={form.location}
           onChange={(e) => handleChange("location", e.currentTarget.value)}
+          required
         />
 
         <NumberInput
           label="Price"
           value={form.price}
           onChange={(val) => handleChange("price", val ?? 0)}
+          required
         />
 
         <Textarea
@@ -104,18 +107,21 @@ export default function ServiceForm() {
           onChange={(e) => handleChange("description", e.currentTarget.value)}
           autosize
           minRows={3}
+          required
         />
 
         <TextInput
           label="Contact Email"
           value={form.contact_email}
           onChange={(e) => handleChange("contact_email", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Contact Phone"
           value={form.contact_phone}
           onChange={(e) => handleChange("contact_phone", e.currentTarget.value)}
+          required
         />
 
         <TextInput
@@ -125,12 +131,14 @@ export default function ServiceForm() {
             handleChange("available_days", e.currentTarget.value)
           }
           placeholder="e.g., Mon-Fri, Weekends"
+          required
         />
 
         <NumberInput
           label="Years of Experience"
           value={form.experience_years}
           onChange={(val) => handleChange("experience_years", val ?? 0)}
+          required
         />
 
         <Textarea
@@ -141,6 +149,7 @@ export default function ServiceForm() {
           }
           autosize
           minRows={2}
+          required
         />
 
         <Button mt="md" onClick={handleSubmit}>

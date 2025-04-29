@@ -59,18 +59,21 @@ export default function CommercialPropertyForm() {
           label="Title"
           value={property.title}
           onChange={(e) => handleChange("title", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Address"
           value={property.address}
           onChange={(e) => handleChange("address", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Country"
           value={property.country}
           onChange={(e) => handleChange("country", e.currentTarget.value)}
+          required
         />
 
         <TextInput
@@ -78,12 +81,14 @@ export default function CommercialPropertyForm() {
           placeholder="e.g. 5000 sq ft or 1 acre"
           value={property.lot_size}
           onChange={(e) => handleChange("lot_size", e.currentTarget.value)}
+          required
         />
 
         <NumberInput
           label="Year Built"
           value={property.year_built}
           onChange={(val) => handleChange("year_built", val ?? 0)}
+          required
         />
 
         <TextInput
@@ -91,18 +96,21 @@ export default function CommercialPropertyForm() {
           placeholder="e.g. Commercial, Mixed-use"
           value={property.zoning_type}
           onChange={(e) => handleChange("zoning_type", e.currentTarget.value)}
+          required
         />
 
         <NumberInput
           label="Parking Spaces"
           value={property.parking_spaces}
           onChange={(val) => handleChange("parking_spaces", val ?? 0)}
+          required
         />
 
         <NumberInput
           label="Price"
           value={property.price}
           onChange={(val) => handleChange("price", val ?? 0)}
+          required
         />
 
         <Textarea
@@ -111,6 +119,7 @@ export default function CommercialPropertyForm() {
           onChange={(e) => handleChange("description", e.currentTarget.value)}
           autosize
           minRows={3}
+          required
         />
 
         <Button onClick={handleSubmit} mt="sm">

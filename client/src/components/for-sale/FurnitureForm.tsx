@@ -57,48 +57,56 @@ export default function FurnitureForm() {
           label="Name"
           value={furniture.name}
           onChange={(e) => handleChange("name", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Type"
           value={furniture.type}
           onChange={(e) => handleChange("type", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Material"
           value={furniture.material}
           onChange={(e) => handleChange("material", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Color"
           value={furniture.color}
           onChange={(e) => handleChange("color", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Dimensions"
           value={furniture.dimensions}
           onChange={(e) => handleChange("dimensions", e.currentTarget.value)}
+          required
         />
 
         <NumberInput
           label="Weight (lbs)"
           value={furniture.weight}
           onChange={(val) => handleChange("weight", val ?? undefined)}
+          required
         />
 
         <NumberInput
           label="Price"
           value={furniture.price}
           onChange={(val) => handleChange("price", val ?? undefined)}
+          required
         />
 
         <TextInput
           label="Condition"
           value={furniture.condition}
           onChange={(e) => handleChange("condition", e.currentTarget.value)}
+          required
         />
 
         <Button onClick={handleSubmit} mt="sm">

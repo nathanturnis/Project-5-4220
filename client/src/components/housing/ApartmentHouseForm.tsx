@@ -74,48 +74,56 @@ export default function ApartmentHouseForm() {
           label="Title"
           value={listing.title}
           onChange={(e) => handleChange("title", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Address"
           value={listing.address}
           onChange={(e) => handleChange("address", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Country"
           value={listing.country}
           onChange={(e) => handleChange("country", e.currentTarget.value)}
+          required
         />
 
         <NumberInput
           label="Bedrooms"
           value={listing.bedrooms}
           onChange={(val) => handleChange("bedrooms", val ?? 0)}
+          required
         />
 
         <NumberInput
           label="Bathrooms"
           value={listing.bathrooms}
           onChange={(val) => handleChange("bathrooms", val ?? 0)}
+          required
         />
 
         <NumberInput
           label="Square Feet"
           value={listing.square_feet}
           onChange={(val) => handleChange("square_feet", val ?? 0)}
+          required
         />
 
         <TextInput
           label="Lot Size"
           value={listing.lot_size}
           onChange={(e) => handleChange("lot_size", e.currentTarget.value)}
+          required
         />
 
         <NumberInput
           label="Year Built"
           value={listing.year_built}
           onChange={(val) => handleChange("year_built", val ?? 0)}
+          required
         />
 
         <NumberInput
@@ -123,6 +131,7 @@ export default function ApartmentHouseForm() {
           value={listing.price}
           onChange={(val) => handleChange("price", val ?? 0)}
           prefix="$"
+          required
         />
 
         <Button onClick={handleSubmit} mt="sm">

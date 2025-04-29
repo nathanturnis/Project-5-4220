@@ -55,42 +55,49 @@ export default function CarsForm() {
           label="Year Built"
           value={car.year_built}
           onChange={(val) => handleChange("year_built", val ?? undefined)}
+          required
         />
 
         <TextInput
           label="Make"
           value={car.make}
           onChange={(e) => handleChange("make", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Model"
           value={car.model}
           onChange={(e) => handleChange("model", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Color"
           value={car.color}
           onChange={(e) => handleChange("color", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Type"
           value={car.type}
           onChange={(e) => handleChange("type", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Condition"
           value={car.condition}
           onChange={(e) => handleChange("condition", e.currentTarget.value)}
+          required
         />
 
         <NumberInput
           label="Price"
           value={car.price}
           onChange={(val) => handleChange("price", val ?? undefined)}
+          required
         />
 
         <Textarea
@@ -99,6 +106,7 @@ export default function CarsForm() {
           onChange={(e) => handleChange("description", e.currentTarget.value)}
           autosize
           minRows={3}
+          required
         />
 
         <Button onClick={handleSubmit} mt="sm">

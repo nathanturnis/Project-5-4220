@@ -58,42 +58,49 @@ export default function BoatsForm() {
           label="Year Built"
           value={boat.year_built}
           onChange={(val) => handleChange("year_built", val ?? undefined)}
+          required
         />
 
         <TextInput
           label="Make"
           value={boat.make}
           onChange={(e) => handleChange("make", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Model"
           value={boat.model}
           onChange={(e) => handleChange("model", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Color"
           value={boat.color}
           onChange={(e) => handleChange("color", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Type"
           value={boat.type}
           onChange={(e) => handleChange("type", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Condition"
           value={boat.condition}
           onChange={(e) => handleChange("condition", e.currentTarget.value)}
+          required
         />
 
         <NumberInput
           label="Price"
           value={boat.price}
           onChange={(val) => handleChange("price", val ?? undefined)}
+          required
         />
 
         <Textarea
@@ -102,6 +109,7 @@ export default function BoatsForm() {
           onChange={(e) => handleChange("description", e.currentTarget.value)}
           autosize
           minRows={3}
+          required
         />
 
         <Button onClick={handleSubmit} mt="sm">

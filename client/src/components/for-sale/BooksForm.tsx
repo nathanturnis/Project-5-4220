@@ -58,18 +58,21 @@ export default function BooksForm() {
           label="Title"
           value={book.title}
           onChange={(e) => handleChange("title", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Author"
           value={book.author}
           onChange={(e) => handleChange("author", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Publisher"
           value={book.publisher}
           onChange={(e) => handleChange("publisher", e.currentTarget.value)}
+          required
         />
 
         <TextInput
@@ -79,24 +82,28 @@ export default function BooksForm() {
             handleChange("published_date", e.currentTarget.value)
           }
           placeholder="YYYY-MM-DD or Month Year"
+          required
         />
 
         <TextInput
           label="Genre"
           value={book.genre}
           onChange={(e) => handleChange("genre", e.currentTarget.value)}
+          required
         />
 
         <NumberInput
           label="Pages"
           value={book.pages}
           onChange={(val) => handleChange("pages", val ?? undefined)}
+          required
         />
 
         <NumberInput
           label="Price"
           value={book.price}
           onChange={(val) => handleChange("price", val ?? undefined)}
+          required
         />
 
         <Textarea
@@ -105,6 +112,7 @@ export default function BooksForm() {
           onChange={(e) => handleChange("description", e.currentTarget.value)}
           autosize
           minRows={3}
+          required
         />
 
         <Button onClick={handleSubmit} mt="sm">

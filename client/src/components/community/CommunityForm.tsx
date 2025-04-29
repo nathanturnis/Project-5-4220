@@ -79,12 +79,14 @@ export default function CommunityForm() {
           onChange={(e) => handleChange("description", e.currentTarget.value)}
           autosize
           minRows={3}
+          required
         />
 
         <TextInput
           label="Location"
           value={form.location}
           onChange={(e) => handleChange("location", e.currentTarget.value)}
+          required
         />
 
         <TextInput
@@ -92,6 +94,7 @@ export default function CommunityForm() {
           type="datetime-local"
           value={form.date_time}
           onChange={(e) => handleChange("date_time", e.currentTarget.value)}
+          required
         />
 
         <Group grow>
@@ -101,6 +104,7 @@ export default function CommunityForm() {
             onChange={(e) =>
               handleChange("contact_email", e.currentTarget.value)
             }
+            required
           />
           <TextInput
             label="Contact Phone"
@@ -108,6 +112,7 @@ export default function CommunityForm() {
             onChange={(e) =>
               handleChange("contact_phone", e.currentTarget.value)
             }
+            required
           />
         </Group>
 
@@ -115,6 +120,7 @@ export default function CommunityForm() {
           label="Organization"
           value={form.organization}
           onChange={(e) => handleChange("organization", e.currentTarget.value)}
+          required
         />
 
         <Textarea
@@ -125,6 +131,7 @@ export default function CommunityForm() {
           }
           autosize
           minRows={2}
+          required
         />
 
         <Button onClick={handleSubmit}>Submit</Button>

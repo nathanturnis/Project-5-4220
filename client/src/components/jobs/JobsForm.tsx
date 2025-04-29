@@ -69,24 +69,28 @@ export default function JobsForm() {
           onChange={(val) => handleChange("job_type", val ?? "")}
           placeholder="Select job type"
           clearable
+          required
         />
 
         <TextInput
           label="Job Title"
           value={job.title}
           onChange={(e) => handleChange("title", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Company"
           value={job.company}
           onChange={(e) => handleChange("company", e.currentTarget.value)}
+          required
         />
 
         <TextInput
           label="Location"
           value={job.location}
           onChange={(e) => handleChange("location", e.currentTarget.value)}
+          required
         />
 
         <Select
@@ -96,12 +100,14 @@ export default function JobsForm() {
           onChange={(val) => handleChange("employment_type", val ?? "")}
           placeholder="Select type"
           clearable
+          required
         />
 
         <NumberInput
           label="Salary"
           value={job.salary}
           onChange={(val) => handleChange("salary", val ?? 0)}
+          required
         />
 
         <Textarea
@@ -110,6 +116,7 @@ export default function JobsForm() {
           onChange={(e) => handleChange("description", e.currentTarget.value)}
           autosize
           minRows={3}
+          required
         />
 
         <Select
@@ -119,6 +126,7 @@ export default function JobsForm() {
           onChange={(val) => handleChange("level", val ?? "")}
           placeholder="Select level"
           clearable
+          required
         />
 
         <Button onClick={handleSubmit} mt="sm">
