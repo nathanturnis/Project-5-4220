@@ -21,6 +21,7 @@ import ServiceForm from "./components/services/ServicesForm.tsx";
 import CommunityForm from "./components/community/CommunityForm.tsx";
 import LoginForm from "./components/Login.tsx";
 import RegisterForm from "./components/Register.tsx";
+import { AuthProvider } from "./components/AuthContext.tsx";
 
 const theme = createTheme({
   defaultRadius: "md",
@@ -29,39 +30,41 @@ const theme = createTheme({
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <MantineProvider theme={theme} defaultColorScheme="dark">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<ForSaleTabs />} />
-            <Route path="/new-car" element={<CarsForm />} />
-            <Route path="/new-motorcycle" element={<MotorcyclesForm />} />
-            <Route path="/new-boat" element={<BoatsForm />} />
-            <Route path="/new-book" element={<BooksForm />} />
-            <Route path="/new-furniture" element={<FurnitureForm />} />
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<ForSaleTabs />} />
+              <Route path="/new-car" element={<CarsForm />} />
+              <Route path="/new-motorcycle" element={<MotorcyclesForm />} />
+              <Route path="/new-boat" element={<BoatsForm />} />
+              <Route path="/new-book" element={<BooksForm />} />
+              <Route path="/new-furniture" element={<FurnitureForm />} />
 
-            <Route path="/housing" element={<HousingTabs />} />
-            <Route
-              path="/housing/new-apt-house"
-              element={<ApartmentHouseForm />}
-            />
-            <Route
-              path="/housing/new-commercial"
-              element={<CommercialPropertyForm />}
-            />
+              <Route path="/housing" element={<HousingTabs />} />
+              <Route
+                path="/housing/new-apt-house"
+                element={<ApartmentHouseForm />}
+              />
+              <Route
+                path="/housing/new-commercial"
+                element={<CommercialPropertyForm />}
+              />
 
-            <Route path="/services" element={<ServicesTabs />} />
-            <Route path="/services/new" element={<ServiceForm />} />
+              <Route path="/services" element={<ServicesTabs />} />
+              <Route path="/services/new" element={<ServiceForm />} />
 
-            <Route path="/jobs" element={<JobsTabs />} />
-            <Route path="/community" element={<CommunityTabs />} />
-            <Route path="/community/new" element={<CommunityForm />} />
+              <Route path="/jobs" element={<JobsTabs />} />
+              <Route path="/community" element={<CommunityTabs />} />
+              <Route path="/community/new" element={<CommunityForm />} />
 
-            <Route path="/jobs/new-job" element={<JobsForm />} />
-          </Route>
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/register" element={<RegisterForm />} />
-        </Routes>
-      </BrowserRouter>
+              <Route path="/jobs/new-job" element={<JobsForm />} />
+            </Route>
+            <Route path="/login" element={<LoginForm />} />
+            <Route path="/register" element={<RegisterForm />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </MantineProvider>
   </StrictMode>
 );

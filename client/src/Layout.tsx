@@ -6,13 +6,21 @@ import {
   faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AppShell, Burger, Group, NavLink } from "@mantine/core";
+import { AppShell, Burger, Button, Group, NavLink } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { Link, Outlet, useLocation } from "react-router";
+import { Link, Outlet, useLocation, useNavigate } from "react-router";
+import { useAuth } from "./components/AuthContext";
 
 export default function Layout() {
   const location = useLocation();
   const [opened, { toggle }] = useDisclosure();
+  const { isLoggedIn, setIsLoggedIn } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    navigate("/login");
+  };
 
   return (
     <AppShell
@@ -84,6 +92,20 @@ export default function Layout() {
             },
           }}
         />
+
+        {isLoggedIn ? (
+          <Button
+            variant="filled"
+            color="red"
+            mt={"auto"}
+            onClick={handleLogout}>
+            Logout
+          </Button>
+        ) : (
+          <Button component={Link} to="/login" mt={"auto"}>
+            Login / Register
+          </Button>
+        )}
       </AppShell.Navbar>
       <AppShell.Main>
         <Outlet />

@@ -7,13 +7,18 @@ import {
   Box,
   Title,
 } from "@mantine/core";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useAuth } from "./AuthContext";
 
 export default function LoginForm() {
   const [form, setForm] = useState({
     username: "",
     password: "",
   });
+
+  const { setIsLoggedIn } = useAuth();
+
+  const navigate = useNavigate();
 
   const handleChange = (key: string, value: string) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -29,9 +34,8 @@ export default function LoginForm() {
 
       if (!response.ok) throw new Error("Failed to login");
 
-      //const data = await response.json();
-      window.location.href = "/";
-      // You can redirect or save token here
+      setIsLoggedIn(true);
+      navigate("/");
     } catch (err) {
       console.error(err);
       alert("Invalid credentials or server error.");
@@ -66,6 +70,9 @@ export default function LoginForm() {
         </Button>
         <Button variant="subtle" component={Link} to="/register">
           Register
+        </Button>
+        <Button variant="light" color="grape" component={Link} to="/">
+          View as Visitor
         </Button>
       </Stack>
     </Box>

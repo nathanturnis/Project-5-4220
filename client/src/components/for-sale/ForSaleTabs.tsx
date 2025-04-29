@@ -7,9 +7,11 @@ import { Motorcycle } from "../../types/motorcycle";
 import { Book } from "../../types/book";
 import { Furniture } from "../../types/furniture";
 import { Link } from "react-router";
+import { useAuth } from "../AuthContext";
 
 export default function ForSaleTabs() {
   const [activeTab, setActiveTab] = useState<string | null>("cars");
+  const { isLoggedIn } = useAuth();
 
   return (
     <Tabs value={activeTab} onChange={setActiveTab}>
@@ -22,9 +24,12 @@ export default function ForSaleTabs() {
       </Tabs.List>
 
       <Tabs.Panel value="cars">
-        <Button mt="md" component={Link} to="/new-car">
-          New Car Listing
-        </Button>
+        {isLoggedIn ? (
+          <Button mt="md" component={Link} to="/new-car">
+            New Car Listing
+          </Button>
+        ) : null}
+
         <ItemListing<Car> endpoint="/api/cars" />
       </Tabs.Panel>
       <Tabs.Panel value="motorcycles">
