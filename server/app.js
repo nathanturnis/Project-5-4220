@@ -38,6 +38,11 @@ app.use('/api', housingRoutes);
 app.use('/api', servicesRoutes);
 app.use('/api', communityRoutes);
 
+app.all('/{*any}', function (req, res) {
+    res.sendFile(path.join(__dirname, 'dist/index.html'), function (err) {
+    })
+})
+
 // Login User
 app.post('/api/login', async (req, res) => {
     const { username, password } = req.body;
